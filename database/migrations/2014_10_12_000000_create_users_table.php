@@ -16,6 +16,7 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name')->nullable();
+            $table->string('twitter_account_name')->nullable();
             $table->string('provider');
             $table->string('provider_id')->unique();
             $table->rememberToken();
