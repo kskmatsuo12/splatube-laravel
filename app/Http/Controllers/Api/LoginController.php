@@ -9,6 +9,7 @@ use Illuminate\Http\JsonResponse;
 
 use Socialite;
 use App\User;
+use Log;
 
 class LoginController extends Controller
 {
@@ -36,6 +37,7 @@ class LoginController extends Controller
             $user = new User;
             $user->provider = 'twitter';
             $user->provider_id = $provider_id;
+            $user->twitter_account_name = $providerUser->nickname;
             $user->save();
         } else {
 
