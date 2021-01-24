@@ -17,6 +17,7 @@ class WeaponController extends Controller
             $weapon_id = $weapon->id;
         }
         $posts = Post::where('weapon_id',$weapon_id)->get();
+    
         return response()->json(['posts'=>$posts],200);
     }
 }
