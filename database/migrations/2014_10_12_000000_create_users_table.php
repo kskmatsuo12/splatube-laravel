@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('name')->nullable();
             $table->string('twitter_account_name')->nullable();
             $table->string('provider');
-            $table->string('provider_id')->unique();
+            $table->string('provider_id',100)->unique();
             $table->rememberToken();
             $table->timestamps();
         });
