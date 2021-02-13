@@ -25,6 +25,7 @@ Route::get('/post', 'Api\PostController@create');
 
 Route::group(['middleware' => ['auth:api']], function(){
     Route::post('/post','Api\PostController@store');
+    Route::post('/quit', 'Api\AuthController@quit');
 });
 
 Route::get('/login/{provider}', 'Api\LoginController@redirectToProvider')->where('provider', 'twitter');
