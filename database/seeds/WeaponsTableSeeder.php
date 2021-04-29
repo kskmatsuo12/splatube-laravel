@@ -1280,6 +1280,15 @@ class WeaponsTableSeeder extends Seeder
                 "updated_at" => now(),
                 "created_at" => now(),
             ],
+            [
+                'id' => 141,
+                'name' => '未選択',
+                'category_id' => 0,
+                "sub_id" => 0,
+                "special_id" => 0,
+                "updated_at" => now(),
+                "created_at" => now(),
+            ]
         ];
 
         DB::table('m_weapons')->insert($data);

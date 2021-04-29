@@ -16,8 +16,9 @@ class WeaponController extends Controller
         if(!empty($weapon)){
             $weapon_id = $weapon->id;
         }
-        $posts = Post::where('weapon_id',$weapon_id)->get();
-    
+        $posts = Post::where('weapon_id',$weapon_id)
+            ->with('weapon')
+            ->paginate(20);
         return response()->json(['posts'=>$posts],200);
     }
 }

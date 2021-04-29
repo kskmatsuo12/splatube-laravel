@@ -26,4 +26,11 @@ class PostController extends Controller
         $post->save();
         return response()->json(['response'=>'登録ありがとうございます'],200);
     }
+
+    public function show($id)
+    {
+        $post = Post::with('weapon')->find($id);
+        \Log::info($post);
+        return response()->json(compact('post'),200);
+    }
 }
