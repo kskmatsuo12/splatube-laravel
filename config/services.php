@@ -43,6 +43,8 @@ return [
         'access_token' => env('TWITTER_ACCESS_TOKEN'),
         'access_token_secret' => env('TWITTER_ACCESS_TOKEN_SECRET')
     ],
-
+    'google' => [
+        'key' => env('GOOGLE_API_KEY')
+    ]
 
 ];

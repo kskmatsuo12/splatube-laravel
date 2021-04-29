@@ -22,6 +22,7 @@ Route::get('/home','Api\HomeController@index');
 Route::get('/weapons','Api\HomeController@weapons');
 Route::get('/weapon/{weapon}','Api\WeaponController@weapon');
 Route::get('/post', 'Api\PostController@create');
+Route::get('/post/{id}', 'Api\PostController@show');
 
 Route::group(['middleware' => ['auth:api']], function(){
     Route::post('/post','Api\PostController@store');
