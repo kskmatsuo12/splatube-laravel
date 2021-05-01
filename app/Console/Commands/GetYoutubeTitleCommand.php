@@ -23,7 +23,7 @@ class GetYoutubeTitleCommand extends Command
      *
      * @var string
      */
-    protected $description = '既存のデータにタイトルを取得するやつ';
+    protected $description = 'チャンネル名でデータをぶっこむ';
 
     /**
      * Create a new command instance.
