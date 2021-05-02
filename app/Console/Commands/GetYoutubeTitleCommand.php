@@ -7,6 +7,7 @@ use Google_Client;
 use Google_Service_YouTube;
 
 use App\Models\Post;
+use App\Models\MWeapon;
 use Carbon\Carbon;
 
 class GetYoutubeTitleCommand extends Command
@@ -50,8 +51,10 @@ class GetYoutubeTitleCommand extends Command
         $youtube = new Google_Service_YouTube($client);
 
         // 必要情報を引数に持たせ、listSearchで検索して動画一覧を取得
-        $channel_id = 'UCRb4IVckX44UIDzyykek_gA';
+        $channel_id = 'UC4BQjeEH7-iUqUbyYVDYtsg';
         $now = Carbon::parse('now','Asia/Tokyo')->format('Y-m-d\TH:i:s') . 'Z';
+
+        $weapons = MWeapon::select('id','name')->orderBy('id','desc')->get();
 
         for($i = 0; $i < 20; $i++){
             $oldest = Post::where('channel_id',$channel_id)
@@ -72,17 +75,28 @@ class GetYoutubeTitleCommand extends Command
                 if(empty($post)){
                     $post = new Post;
                     $post->user_id = 1;//admin=1;
-                    $post->weapon_id = 141;//未選択
+                    $post->weapon_id = 140;//未選択
                     $post->youtube_id = $youtube_id;
-                    $post->title = $item['snippet']['title'];
-                    $post->description = $item['snippet']['description'];
+                    $title = $item['snippet']['title'];
+                    $post->title = $title;
+                    $description = $item['snippet']['description'];
+                    $post->description = $description;
                     $post->thumbnail = $item['snippet']['thumbnails']['medium']['url'];
                     $post->channel_id = $item['snippet']['channelId'];
                     $post->channel_name = $item['snippet']['channelTitle'];
                     $post->published_at = $item['snippet']['publishedAt'];
+
+                    foreach($weapons as $weapon){
+                        if(strpos($title, $weapon->name) !== false || strpos($description, $weapon->name) !== false) {
+                            $post->weapon_id = $weapon->id;
+                            break;
+                        }
+                    }
+
                     $post->save();
                 }
             }
+            return;
             sleep(5);
         }
        

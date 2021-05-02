@@ -18,6 +18,7 @@ class WeaponController extends Controller
         }
         $posts = Post::where('weapon_id',$weapon_id)
             ->with('weapon')
+            ->orderBy('published_at','desc')
             ->paginate(20);
         return response()->json(['posts'=>$posts],200);
     }

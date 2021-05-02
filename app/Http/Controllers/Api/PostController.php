@@ -30,7 +30,6 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::with('weapon')->find($id);
-        \Log::info($post);
         return response()->json(compact('post'),200);
     }
 }
