@@ -3,10 +3,11 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use Google_Client;
-use Google_Service_YouTube;
+use App\Services\GetYoutubeTitle;
 
 use App\Models\Post;
+use App\Models\MWeapon;
+use App\Models\Channel;
 use Carbon\Carbon;
 
 class GetYoutubeTitleCommand extends Command
@@ -23,7 +24,7 @@ class GetYoutubeTitleCommand extends Command
      *
      * @var string
      */
-    protected $description = '既存のデータにタイトルを取得するやつ';
+    protected $description = 'チャンネル名でデータをぶっこむ';
 
     /**
      * Create a new command instance.
@@ -42,49 +43,21 @@ class GetYoutubeTitleCommand extends Command
      */
     public function handle()
     {
-        // Googleへの接続情報のインスタンスを作成と設定
-        $client = new Google_Client();
-        $client->setDeveloperKey(config('services.google.key'));
+        // // Googleへの接続情報のインスタンスを作成と設定
+        // $client = new Google_Client();
+        // $client->setDeveloperKey(config('services.google.key'));
 
-        // 接続情報のインスタンスを用いてYoutubeのデータへアクセス可能なインスタンスを生成
-        $youtube = new Google_Service_YouTube($client);
+        // // 接続情報のインスタンスを用いてYoutubeのデータへアクセス可能なインスタンスを生成
+        // $youtube = new Google_Service_YouTube($client);
 
-        // 必要情報を引数に持たせ、listSearchで検索して動画一覧を取得
-        $channel_id = 'UCRb4IVckX44UIDzyykek_gA';
-        $now = Carbon::parse('now','Asia/Tokyo')->format('Y-m-d\TH:i:s') . 'Z';
+        //ここに新しく取得したIDを入れるだけ
 
-        for($i = 0; $i < 20; $i++){
-            $oldest = Post::where('channel_id',$channel_id)
-            ->orderBy('published_at','asc')
-            ->first();
-            $items = $youtube->search->listSearch('snippet', [
-                'channelId'  => $channel_id,
-                'order'      => 'date',
-                'maxResults' => 50,
-                'publishedBefore' => $oldest ? $oldest->published_at : $now,
-            ]);
-        
-            if(count($items)===0) break;
+        $id = 1;
+        $channel = Channel::find($id);
+        $channel_id = $channel->channel_id;
 
-            foreach($items as $item){
-                $youtube_id = $item['id']['videoId'];
-                $post = Post::where('youtube_id',$youtube_id)->first();
-                if(empty($post)){
-                    $post = new Post;
-                    $post->user_id = 1;//admin=1;
-                    $post->weapon_id = 141;//未選択
-                    $post->youtube_id = $youtube_id;
-                    $post->title = $item['snippet']['title'];
-                    $post->description = $item['snippet']['description'];
-                    $post->thumbnail = $item['snippet']['thumbnails']['medium']['url'];
-                    $post->channel_id = $item['snippet']['channelId'];
-                    $post->channel_name = $item['snippet']['channelTitle'];
-                    $post->published_at = $item['snippet']['publishedAt'];
-                    $post->save();
-                }
-            }
-            sleep(5);
-        }
+        $getYoutube = new GetYoutubeTitle;
+        $getYoutube->getTitle($channel_id);
        
         // $video_id = '2eHK7qMINjg';
         // $api_key = config('services.google.key');

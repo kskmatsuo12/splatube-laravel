@@ -24,10 +24,12 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        $schedule->command('batch:yesterday_youtube')
+                    ->dailyAt('1:00');
+        $schedule->command('generate:youtube_description')
+                    ->dailyAt('1:30');
     }
-
+//  *  *  *  *  * root cd /var/www/html/splatube && php artisan schedule:run >> /dev/null 2>&1
     /**
      * Register the commands for the application.
      *

@@ -42,13 +42,13 @@ class LoginController extends Controller
         } else {
 
         }
-        $token = $user->createToken('app')->accessToken;
-        return response()->json(['token'=>$token],200);
-        try {
-        } catch (\Exception $e) {
-            return redirect('/login')->with('auth_error','一致するメールアドレスを取得できませんでした');
+
+        if($user->id == 1){
+            $token = $user->createToken('app')->accessToken;
+            return response()->json(['token'=>$token],200);
+        } else {
+            return response()->json(['response'=> '現在ログインシステムは使われていません'],403);
         }
-        return $providerUser;
     } 
 
 }

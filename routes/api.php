@@ -19,12 +19,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/home','Api\HomeController@index');
-Route::get('/weapons','Api\HomeController@weapons');
+Route::get('/weapons','Api\WeaponController@index');
 Route::get('/weapon/{weapon}','Api\WeaponController@weapon');
 Route::get('/post', 'Api\PostController@create');
 Route::get('/post/{id}', 'Api\PostController@show');
 
+Route::get('/admin/weapons','Admin\PostController@weapons');
 Route::group(['middleware' => ['auth:api']], function(){
+    Route::post('/admin/weapon','Admin\PostController@store');
     Route::post('/post','Api\PostController@store');
     Route::post('/quit', 'Api\AuthController@quit');
 });

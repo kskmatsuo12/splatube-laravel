@@ -12,7 +12,10 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $posts = Post::orderBy('created_at','desc')->take(30)->get();
+        $posts = Post::with('weapon')
+            ->orderBy('published_at','desc')
+            ->take(32)
+            ->get();
         return response()->json(['posts'=>$posts],200);
     }
 
