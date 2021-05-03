@@ -1406,7 +1406,7 @@ class WeaponsTableSeeder extends Seeder
                 'id' => 140,
                 'name' => '未選択',
                 'image_url' => '/weapon/140.png',
-                'category_id' => 0,
+                'category_id' => 10,
                 "sub_id" => 0,
                 "special_id" => 0,
                 "updated_at" => now(),

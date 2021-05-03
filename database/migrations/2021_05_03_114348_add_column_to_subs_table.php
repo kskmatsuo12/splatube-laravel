@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddColumnToMWeaponsTable extends Migration
+class AddColumnToSubsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class AddColumnToMWeaponsTable extends Migration
      */
     public function up()
     {
-        Schema::table('m_weapons', function (Blueprint $table) {
-            $table->integer('range')->after('special_id')->nullable()->default(null);
-            $table->integer('damage')->after('range')->nullable()->default(null);
+        Schema::table('m_subs', function (Blueprint $table) {
+            $table->string('image_url')->after('name')->nullable();
         });
     }
 
@@ -26,7 +25,7 @@ class AddColumnToMWeaponsTable extends Migration
      */
     public function down()
     {
-        Schema::table('m_weapons', function (Blueprint $table) {
+        Schema::table('subs', function (Blueprint $table) {
             //
         });
     }

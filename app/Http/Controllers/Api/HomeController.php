@@ -14,7 +14,7 @@ class HomeController extends Controller
     {
         $posts = Post::with('weapon')
             ->orderBy('published_at','desc')
-            ->take(30)
+            ->take(32)
             ->get();
         return response()->json(['posts'=>$posts],200);
     }

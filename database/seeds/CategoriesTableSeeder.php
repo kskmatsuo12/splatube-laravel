@@ -66,6 +66,12 @@ class CategoriesTableSeeder extends Seeder
                 "created_at" => now(),
                 "updated_at" => now()
             ],
+            [
+                'id' => 10,
+                'name' => '未選択',
+                "created_at" => now(),
+                "updated_at" => now()
+            ],
         ];
 
         DB::table('m_categories')->insert($data);

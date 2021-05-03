@@ -29,7 +29,19 @@ class PostController extends Controller
 
     public function show($id)
     {
-        $post = Post::with('weapon')->find($id);
-        return response()->json(compact('post'),200);
+        $post = Post::with('weapon')
+            ->with('weapon.category')
+            ->with('weapon.sub')
+            ->with('weapon.special')
+            ->find($id);
+
+        $weapon_id = $post->weapon_id;
+        $relate_posts = Post::where('weapon_id',$weapon_id)
+        ->with('weapon')
+        ->take(8)
+        ->get();
+        \Log::info($relate_posts);
+
+        return response()->json(compact('post','relate_posts'),200);
     }
 }
