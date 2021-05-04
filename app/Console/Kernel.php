@@ -28,6 +28,8 @@ class Kernel extends ConsoleKernel
                     ->dailyAt('1:00');
         $schedule->command('generate:youtube_description')
                     ->dailyAt('1:30');
+        $schedule->command('batch:sitemap')
+                    ->dailyAt('0:00');
     }
 //  *  *  *  *  * root cd /var/www/html/splatube && php artisan schedule:run >> /dev/null 2>&1
     /**

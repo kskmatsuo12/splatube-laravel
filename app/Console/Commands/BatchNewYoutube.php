@@ -63,6 +63,8 @@ class BatchNewYoutube extends Command
             $getYoutube = new GetNewYoutubeTitle;
             $getYoutube->getTitle($channel_id,$yesterday,$weapons,$youtube);
             sleep(5);
-        } 
+        }
+
+        \Slack::send('新しいタイトルの取得が正常に終わりました');
     }
 }

@@ -41,4 +41,16 @@ class PostController extends Controller
             return abort(500);
         }
     }
+
+    public function destroy(Request $request)
+    {
+        $post_id = $request->post_id;
+        $post = Post::find($post_id);
+        if(!empty($post)){
+            $post->delete();
+            return response()->json(['response'=>'ok'],200);
+        } else {
+            return response()->json(['response'=>'エラー'],405);
+        }
+    }
 }

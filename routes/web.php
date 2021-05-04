@@ -11,12 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Auth::routes();
+// Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 
-//使うプロバイダーをwhereで指定する。今回はTwitterだけ使う。
+//サイトマップページ
+Route::get('sitemap.xml', "Admin\SitemapController@sitemap")->name('sitemap');
