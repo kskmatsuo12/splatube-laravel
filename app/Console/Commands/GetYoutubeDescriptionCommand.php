@@ -55,5 +55,7 @@ class GetYoutubeDescriptionCommand extends Command
             $post->save();
             sleep(2);
         }
+
+        \Slack::send('新しいポストのDescriptionを取得しました。'.count($posts).'件');
     }
 }

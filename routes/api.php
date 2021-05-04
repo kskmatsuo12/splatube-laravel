@@ -26,11 +26,11 @@ Route::get('/post/{id}', 'Api\PostController@show');
 
 Route::get('/admin/weapons','Admin\PostController@weapons');
 Route::group(['middleware' => ['auth:api']], function(){
-    Route::post('/admin/weapon','Admin\PostController@store');
+    Route::post('/admin/post/update','Admin\PostController@store');
+    Route::post('/admin/post/delete','Admin\PostController@destroy');
     Route::post('/post','Api\PostController@store');
     Route::post('/quit', 'Api\AuthController@quit');
 });
 
 Route::get('/login/{provider}', 'Api\LoginController@redirectToProvider')->where('provider', 'twitter');
 Route::get('/login/{provider}/callback', 'Api\LoginController@handleProviderCallback')->where('provider', 'twitter');
-
