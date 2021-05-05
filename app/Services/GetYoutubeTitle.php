@@ -31,7 +31,7 @@ class GetYoutubeTitle {
             $items = $youtube->search->listSearch('snippet', [
                 'channelId'  => $channel_id,
                 'order'      => 'date',
-                'maxResults' => 10,
+                'maxResults' => 50,
                 'publishedBefore' => $oldest ? $oldest->published_at : $now,
             ]);
 
@@ -66,7 +66,6 @@ class GetYoutubeTitle {
                 }
 
             }
-            return;
             sleep(5);
         }
     }
