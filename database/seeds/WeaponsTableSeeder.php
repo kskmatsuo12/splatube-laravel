@@ -11,6 +11,7 @@ class WeaponsTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('m_weapons')->delete();
         $data = [
             [
                 'id' => 1,
