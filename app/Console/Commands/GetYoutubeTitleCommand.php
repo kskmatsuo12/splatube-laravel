@@ -52,7 +52,7 @@ class GetYoutubeTitleCommand extends Command
 
         //ここに新しく取得したIDを入れるだけ
 
-        $id = 1;
+        $id = 2;
         $channel = Channel::find($id);
         $channel_id = $channel->channel_id;
 
