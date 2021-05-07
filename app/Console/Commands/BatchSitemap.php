@@ -49,6 +49,7 @@ class BatchSitemap extends Command
         
         //固定ページ
         $default = [
+            'https://splatube.net/',
             'https://splatube.net/policy',
             'https://splatube.net/terms',
             'https://splatube.net/weapons'
