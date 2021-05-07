@@ -11,7 +11,7 @@ class WeaponsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('m_weapons')->delete();
+        \DB::table('m_weapons')->delete();
         $data = [
             [
                 'id' => 1,
@@ -1238,8 +1238,8 @@ class WeaponsTableSeeder extends Seeder
                 'name' => 'スパッタリークリア',
                 'image_url' => '/weapon/123.png',
                 'category_id' => 2,
-                "sub_id" => 3,
-                "special_id" => 8,
+                "sub_id" => 11,
+                "special_id" => 4,
                 "updated_at" => now(),
                 "created_at" => now(),
             ],
