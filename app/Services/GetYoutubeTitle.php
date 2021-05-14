@@ -7,6 +7,7 @@ use Google_Service_YouTube;
 
 use App\Models\Post;
 use App\Models\MWeapon;
+use App\Models\WeaponPopularName;
 use App\Models\Channel;
 use Carbon\Carbon;
 
@@ -55,16 +56,22 @@ class GetYoutubeTitle {
                         $post->published_at = $item['snippet']['publishedAt'];
     
                         foreach($weapons as $weapon){
-                            if(strpos($title, $weapon->name) !== false || strpos($description, $weapon->name) !== false) {
+                            if(strpos($title, $weapon->name) !== false || strpos($description, $weapon->name) !== false){
                                 $post->weapon_id = $weapon->id;
                                 break;
                             }
+                            $popular_names = WeaponPopularName::where('weapon_id',$weapon->id)->orderBy('id','desc')->get();
+                            
+                            foreach($popular_names as $name){
+                                if(strpos($title, $name->name) !== false || strpos($description, $name->name) !== false){
+                                    $post->weapon_id = $weapon->id;
+                                    break 2;
+                                }
+                            }          
                         }
-    
                         $post->save();
                     }               
                 }
-
             }
             sleep(5);
         }
