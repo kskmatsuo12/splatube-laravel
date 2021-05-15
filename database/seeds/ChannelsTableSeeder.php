@@ -28,6 +28,11 @@ class ChannelsTableSeeder extends Seeder
                 'name' => 'えとなch',
                 'channel_id' => 'UCSmqsu-W-GIiVOVFWbxo1Dg'
             ],
+            [
+                'id' => 4,
+                'name' => 'ねっぴー',
+                'channel_id' => 'UCnVw67dYJSFHgTZizGCBFgg'
+            ],
         ];
         DB::table('channels')->insert($data);
     }
