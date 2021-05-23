@@ -86,7 +86,11 @@ class BatchSitemap extends Command
 
             if(!empty($post)){
                 for($i = 0; $i < $max_page; $i++){
-                    $url = "https://splatube.net/weapon/".$weapon->name."?page=".$i+1;
+                    if($i == 0){
+                        $url = "https://splatube.net/weapon/".$weapon->name;
+                    } else {
+                        $url = "https://splatube.net/weapon/".$weapon->name."?page=".$i+1;
+                    }
                     $content = "<url>
                     <loc>".$url."</loc>
                     <lastmod>".$post->created_at->format('Y-m-d')."</lastmod>
