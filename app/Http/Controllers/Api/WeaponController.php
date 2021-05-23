@@ -22,8 +22,9 @@ class WeaponController extends Controller
         return response()->json(compact('weapons','categories'),200);
     }
 
-    public function weapon($weapon)
+    public function weapon(Request $request,$weapon)
     {
+        $page = $request->page;
         $weapon = MWeapon::where('name',$weapon)
             ->with('category')
             ->with('sub')
@@ -32,12 +33,14 @@ class WeaponController extends Controller
         
         if(!empty($weapon)){
             $weapon_id = $weapon->id;
+        } else {
+            return response()->json([],404);
         }
 
         $posts = Post::where('weapon_id',$weapon_id)
             ->with('weapon')
             ->orderBy('published_at','desc')
-            ->paginate(32);
+            ->paginate(20);
 
         return response()->json(compact('posts','weapon'),200);
     }

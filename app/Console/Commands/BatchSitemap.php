@@ -75,14 +75,24 @@ class BatchSitemap extends Command
 
         $weapons = MWeapon::all();
 
+        //１ページに20件表示
+        $per_page = 20;
+
         foreach($weapons as $weapon){
+            $count = Post::where('weapon_id',$weapon->id)->count();
+            $max_page = ceil($count / $per_page);
+
             $post = Post::where('weapon_id',$weapon->id)->orderBy('created_at','desc')->first();
+
             if(!empty($post)){
-                $content = "<url>
-            <loc>https://splatube.net/weapon/".$weapon->name."</loc>
-            <lastmod>".$post->created_at->format('Y-m-d')."</lastmod>
-            </url>";
-            \File::append($file,$content);
+                for($i = 0; $i < $max_page; $i++){
+                    $url = "https://splatube.net/weapon/".$weapon->name."?page=".$i+1;
+                    $content = "<url>
+                    <loc>".$url."</loc>
+                    <lastmod>".$post->created_at->format('Y-m-d')."</lastmod>
+                    </url>";
+                    \File::append($file,$content);
+                }
             }
         }
 
@@ -92,5 +102,7 @@ class BatchSitemap extends Command
         if(config('app.env') == 'production'){
             'https://www.google.com/ping?sitemap=http://enjoy.splatube.net/sitemap.xml';
         }
+
+        \Slack::send('サイトマップの送信');
     }
 }
