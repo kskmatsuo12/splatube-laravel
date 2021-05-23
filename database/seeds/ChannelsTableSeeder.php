@@ -38,6 +38,36 @@ class ChannelsTableSeeder extends Seeder
                 'name' => 'まぎえーす/MAGIACE',
                 'channel_id' => 'UCGNM3SNCuy5uhDX8h8FBX1g'
             ],
+            [
+                'id' => 6,
+                'name' => 'リオラch',
+                'channel_id' => 'UCZLeZXjm_opUQFhLa4I_VFg'
+            ],
+            [
+                'id' => 7,
+                'name' => 'やんもch',
+                'channel_id' => 'UC1n5554otlE3evhll_RH1Kg'
+            ],
+            [
+                'id' => 8,
+                'name' => 'ティラミスちゃんねる',
+                'channel_id' => 'UCGsLewe5pUfNozxgQ4mqwbg'
+            ],
+            [
+                'id' => 9,
+                'name' => 'ななとGames',
+                'channel_id' => 'UCXqocGp-RQ_sTw8EpPDg10A'
+            ],
+            [
+                'id' => 10,
+                'name' => 'MOJA Ch',
+                'channel_id' => 'UCWPfELhSYfNIJcDaHXw4VoA'
+            ],
+            [
+                'id' => 11,
+                'name' => '裏切りマンキーコングCh',
+                'channel_id' => 'UC_aqpQQpzzTrefOqPK_2Mbw'
+            ],
         ];
         DB::table('channels')->insert($data);
     }
