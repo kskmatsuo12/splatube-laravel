@@ -89,7 +89,7 @@ class BatchSitemap extends Command
                     if($i == 0){
                         $url = "https://splatube.net/weapon/".$weapon->name;
                     } else {
-                        $url = "https://splatube.net/weapon/".$weapon->name."?page=".$i+1;
+                        $url = "https://splatube.net/weapon/".$weapon->name."?page=".($i+1);
                     }
                     $content = "<url>
                     <loc>".$url."</loc>
