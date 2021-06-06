@@ -1412,7 +1412,17 @@ class WeaponsTableSeeder extends Seeder
                 "special_id" => 0,
                 "updated_at" => now(),
                 "created_at" => now(),
-            ]
+            ],
+            [
+                'id' => 141,
+                'name' => '講座系',
+                'image_url' => '/weapon/141.jpg',
+                'category_id' => 10,
+                "sub_id" => 0,
+                "special_id" => 0,
+                "updated_at" => now(),
+                "created_at" => now(),
+            ],
         ];
 
         DB::table('m_weapons')->insert($data);
