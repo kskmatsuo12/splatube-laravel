@@ -52,6 +52,7 @@ class GetNewYoutubeTitle {
                         foreach($popular_names as $name){
                             if(strpos($title, $name->name) !== false || strpos($description, $name->name) !== false){
                                 $post->weapon_id = $weapon->id;
+                                \Slack::send('通称のやつが動いてるかどうかの確認'.$name);
                                 break 2;
                             }
                         }   
