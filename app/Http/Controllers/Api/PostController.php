@@ -33,14 +33,13 @@ class PostController extends Controller
             ->with('weapon.category')
             ->with('weapon.sub')
             ->with('weapon.special')
-            ->find($id);
+            ->findOrFail($id);
 
         $weapon_id = $post->weapon_id;
         $relate_posts = Post::where('weapon_id',$weapon_id)
         ->with('weapon')
         ->take(8)
         ->get();
-        \Log::info($relate_posts);
 
         return response()->json(compact('post','relate_posts'),200);
     }
