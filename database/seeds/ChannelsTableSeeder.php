@@ -68,6 +68,21 @@ class ChannelsTableSeeder extends Seeder
                 'name' => '裏切りマンキーコングCh',
                 'channel_id' => 'UC_aqpQQpzzTrefOqPK_2Mbw'
             ],
+            [
+                'id' => 12,
+                'name' => 'たいじ/たいちゃんねる',
+                'channel_id' => 'UCTrckUWmmrRZcNrfu1mZDOg'
+            ],
+            [
+                'id' => 13,
+                'name' => 'つくなみの秘密基地',
+                'channel_id' => 'UCrw2aCDbMp_OMYlfY3LDM2w'
+            ],
+            [
+                'id' => 14,
+                'name' => '直撃のぱいなぽ〜ちゃんねる',
+                'channel_id' => 'UCLZ53BDS7So3PQDfT7SqYPw'
+            ],
         ];
         DB::table('channels')->insert($data);
     }
