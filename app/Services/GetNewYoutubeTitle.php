@@ -24,7 +24,7 @@ class GetNewYoutubeTitle {
                 'maxResults' => 50,
                 'publishedAfter' => $latest ? $latest->published_at : $yesterday,
             ]);
-            dd($items);
+            
             foreach($items as $item){
                 $youtube_id = $item['id']['videoId'];
                 $post = Post::where('youtube_id',$youtube_id)->first();
