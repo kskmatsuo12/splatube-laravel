@@ -338,7 +338,7 @@ class WeaponsTableSeeder extends Seeder
                 'name' => 'ボールドマーカー',
                 'image_url' => '/weapon/33.png',
                 'category_id' => 1,
-                "sub_id" => 8,
+                "sub_id" => 9,
                 "special_id" => 4,
                 "updated_at" => now(),
                 "created_at" => now(),
