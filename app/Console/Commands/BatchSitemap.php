@@ -104,7 +104,7 @@ class BatchSitemap extends Command
         \File::append($file,$end_content);
 
         if(config('app.env') == 'production'){
-            'https://www.google.com/ping?sitemap=http://enjoy.splatube.net/sitemap.xml';
+            'https://www.google.com/ping?sitemap=https://enjoy.splatube.net/sitemap.xml';
         }
 
         \Slack::send('サイトマップの送信');
