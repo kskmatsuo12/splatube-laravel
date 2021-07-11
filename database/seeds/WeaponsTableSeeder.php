@@ -349,7 +349,7 @@ class WeaponsTableSeeder extends Seeder
                 'image_url' => '/weapon/34.png',
                 'category_id' => 1,
                 "sub_id" => 9,
-                "special_id" => 4,
+                "special_id" => 5,
                 "updated_at" => now(),
                 "created_at" => now(),
             ],

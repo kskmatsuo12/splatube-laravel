@@ -131,6 +131,10 @@ class WeaponPopularNameTableSeeder extends Seeder
                 'name' => 'ボールドネオ',
             ],
             [
+                'weapon_id' => 34,
+                'name' => 'ボルネオ',
+            ],
+            [
                 'weapon_id' => 35,
                 'name' => 'ボールド7',
             ],
