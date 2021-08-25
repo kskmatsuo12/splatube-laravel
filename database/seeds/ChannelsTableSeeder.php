@@ -83,6 +83,21 @@ class ChannelsTableSeeder extends Seeder
                 'name' => '直撃のぱいなぽ〜ちゃんねる',
                 'channel_id' => 'UCLZ53BDS7So3PQDfT7SqYPw'
             ],
+            [
+                'id' => 15,
+                'name' => 'ひいらぎ',
+                'channel_id' => 'UCrBycAPKO9mJ3f3sDZfXYzQ'
+            ],
+            [
+                'id' => 16,
+                'name' => 'くろすっω・）つ',
+                'channel_id' => 'UCEnzC7Xf80qpHDFpiXF1V1Q'
+            ],
+            [
+                'id' => 17,
+                'name' => 'フグ,',
+                'channel_id' => 'UCBkADUDaMoUhDFA9PPwZRgg'
+            ],
         ];
         DB::table('channels')->insert($data);
     }
