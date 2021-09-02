@@ -18,6 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('/footer','Api\FooterController@index');
 Route::get('/home','Api\HomeController@index');
 Route::get('/weapons','Api\WeaponController@index');
 Route::get('/weapon/{weapon}','Api\WeaponController@weapon');
