@@ -22,6 +22,7 @@ class HomeController extends Controller
     public function weapons()
     {
         $weapons = MWeapon::all();
+        \Log::info($weapons);
         return response()->json(['weapons'=>$weapons],200);
     }
 }
